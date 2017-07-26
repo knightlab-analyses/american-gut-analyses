@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 """
-This script is courtesy of Dr. Daniel McDonald, originally found in:
-    barnacle:/home/mcdonadt/ag-April-26-2017/picrust/expand.py
-
-    Includes modifications to use the QIIME 2 API.
+This script is modified from: https://github.com/wasade/reimagined-fiesta, with
+some additional changes to use the QIIME 2 artifact API.
 """
 
 import biom

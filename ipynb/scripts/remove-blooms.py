@@ -5,12 +5,17 @@ from biom import load_table, Table
 bt = q2.Artifact.load('deblur-fmt-and-icu/table.qza').view(Table)
 
 blooms = []
+
+# this file is downloaded via the Animations (Processing) notebook
 with open('newbloom.all.fna', 'r') as f:
     for line in f.read().split('\n'):
         if line.startswith('>'):
             pass
         else:
             blooms.append(line.strip())
+
+# this trim length was used for the manuscript as one sequencing round was at
+# 125 cycles
 blooms = [b[:125] for b in blooms]
 to_remove = set(bt.ids('observation')) & set(blooms)
 
