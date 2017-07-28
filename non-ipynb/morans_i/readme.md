@@ -1,4 +1,4 @@
-The Moran's I analysis is based off of Josh Ladau's work here:
+The Moran's I analysis is based off of Joshua Ladau's work here:
 
 https://github.com/jladau/SpatialAutocorrelation
 
