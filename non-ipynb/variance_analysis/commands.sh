@@ -1,3 +1,4 @@
+# generate the sample sets, distance matrix subsets, and individual job details for a job array submission to SLURM
 headpos ()
 {
     echo `head -n 1 $1 | tr "\t" "\n" | egrep -n "^$2\$" | cut -d ':' -f 1`
