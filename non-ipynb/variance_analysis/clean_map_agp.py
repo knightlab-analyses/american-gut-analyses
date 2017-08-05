@@ -18,7 +18,7 @@ DATA_TYPES_NUMERIC = ('int', 'float')
 
 # Thu, Jun 29, 2017 at 10:40 AM, don't use bmi, age, height or weight
 COLS_FOR_FINAL = [
-    'bmi_corrected', 'state',
+    'bmi_corrected',
     #
     'center_project_name', 'processing_robot', 'primer_plate',
     'extraction_robot', 'plating', 'collection_month', 'vioscreen_vitd2',

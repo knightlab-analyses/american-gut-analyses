@@ -125,7 +125,6 @@
 5000	unweighted	fungal_overgrowth	0.000999	3.2534	0.00071
 5000	unweighted	non_food_allergies_drug_eg_penicillin	0.001998	2.5068	0.00142
 5000	unweighted	non_food_allergies_sun	0.3816	1.0194	0.00058
-5000	unweighted	state	0.000999	7.0876	0.01225
 5000	unweighted	bowel_movement_quality	0.000999	8.3214	0.00322
 5000	unweighted	collection_time	0.974	0.8251	0.00186
 5000	unweighted	vioscreen_caffeine	0.000999	6.2013	0.00434
@@ -175,7 +174,6 @@
 5000	weighted-normalized	non_food_allergies_drug_eg_penicillin	0.01998	3.2092	0.00181
 5000	weighted-normalized	level_of_education	0.000999	2.5409	0.00251
 5000	weighted-normalized	tonsils_removed	0.000999	4.6424	0.00063
-5000	weighted-normalized	state	0.000999	6.4107	0.01109
 5000	weighted-normalized	vivid_dreams	0.01998	2.2551	0.00179
 5000	weighted-normalized	dog	0.1479	1.5165	0.0002
 5000	weighted-normalized	acid_reflux	0.05495	2.2914	0.00096
@@ -407,7 +405,6 @@
 5000	bray_curtis	milk_substitute_frequency	0.000999	1.4955	0.00112
 5000	bray_curtis	dominant_hand	0.9071	0.76447	0.0001
 5000	bray_curtis	alcohol_types_white_wine	0.000999	2.9128	0.0007
-5000	bray_curtis	state	0.000999	4.88	0.00847
 5000	bray_curtis	dog	0.000999	2.7483	0.00036
 5000	bray_curtis	vioscreen_betacryp	0.000999	3.9276	0.00275
 5000	bray_curtis	vioscreen_clac9t11	0.000999	1.8841	0.00132
@@ -468,7 +465,6 @@
 2500	weighted-normalized	multivitamin	0.000999	14.899	0.0017
 2500	weighted-normalized	skin_condition	0.1548	1.4907	0.00019
 2500	weighted-normalized	vegetable_frequency	0.000999	6.6182	0.00321
-2500	weighted-normalized	state	0.000999	6.772	0.01007
 2500	weighted-normalized	vioscreen_lycopene	0.2098	1.3115	0.00078
 2500	weighted-normalized	prepared_meals_frequency	0.000999	4.3066	0.00213
 2500	weighted-normalized	vioscreen_clac9t11	0.1049	1.7316	0.00103
@@ -605,7 +601,6 @@
 2500	unweighted	non_food_allergies_sun	0.4655	0.98206	0.00048
 2500	unweighted	last_move	0.001998	2.5665	0.00044
 2500	unweighted	salted_snacks_frequency	0.000999	6.8441	0.00441
-2500	unweighted	state	0.000999	7.1077	0.01057
 2500	unweighted	center_project_name	0.000999	5.0412	0.01367
 2500	unweighted	alcohol_types_beercider	0.000999	10.069	0.00209
 2500	unweighted	bowel_movement_quality	0.000999	9.3539	0.00311
@@ -820,7 +815,6 @@
 2500	bray_curtis	alcohol_types_white_wine	0.000999	2.9805	0.00062
 2500	bray_curtis	vioscreen_m_meat	0.000999	2.3233	0.00139
 2500	bray_curtis	non_food_allergies_pet_dander	0.3956	1.0378	0.00051
-2500	bray_curtis	state	0.000999	5.1073	0.00762
 2500	bray_curtis	artificial_sweeteners	0.001998	1.4231	0.00186
 2500	bray_curtis	types_of_plants	0.000999	4.4069	0.00309
 2500	bray_curtis	vioscreen_f_citmlb	0.000999	3.0733	0.00183
@@ -896,7 +890,6 @@
 1250	unweighted	vioscreen_alphtoce	0.000999	2.2708	0.00129
 1250	unweighted	vioscreen_tfa181t	0.000999	2.4931	0.00141
 1250	unweighted	specialized_diet_modified_paleo_diet	0.001998	1.9334	0.0024
-1250	unweighted	state	0.000999	6.6127	0.00936
 1250	unweighted	drinks_per_session	0.000999	1.861	0.00606
 1250	unweighted	non_food_allergies_drug_eg_penicillin	0.000999	2.0328	0.00094
 1250	unweighted	vioscreen_betacryp	0.000999	4.4649	0.00253
@@ -1076,7 +1069,6 @@
 1250	bray_curtis	cosmetics_frequency	0.000999	4.2402	0.00183
 1250	bray_curtis	other_supplement_frequency	0.000999	18.612	0.00201
 1250	bray_curtis	weight_corrected	0.000999	16.651	0.00194
-1250	bray_curtis	state	0.000999	5.0128	0.00711
 1250	bray_curtis	roommates	0.001998	1.6206	0.0005
 1250	bray_curtis	bmi_corrected	0.000999	10.757	0.00131
 1250	bray_curtis	antibiotic_history	0.000999	8.1804	0.00264
@@ -1198,7 +1190,6 @@
 1250	weighted-normalized	non_food_allergies_sun	0.2687	1.2354	0.00057
 1250	weighted-normalized	vioscreen_tfa181t	0.1309	1.5564	0.00088
 1250	weighted-normalized	milk_cheese_frequency	0.000999	4.3626	0.00266
-1250	weighted-normalized	state	0.000999	6.2193	0.0088
 1250	weighted-normalized	seasonal_allergies	0.000999	6.8027	0.00075
 1250	weighted-normalized	exercise_frequency	0.000999	5.2731	0.00176
 1250	weighted-normalized	cosmetics_frequency	0.000999	7.0606	0.00304
