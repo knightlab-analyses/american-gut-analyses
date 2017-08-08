@@ -1,8 +1,8 @@
 Co-abundance analysis of the American Gut manuscript data, as contributed by Emmanuel Montassier. 
 
-This analysis depends on the R libraries from QIIME 1.9.1:
+This analysis depends on the mwas R libraries from
 
-https://github.com/biocore/qiime/blob/master/qiime/support_files/R/loaddata.r
+https://github.com/danknights/mwas/tree/master/lib
 
 And the propr package:
 
