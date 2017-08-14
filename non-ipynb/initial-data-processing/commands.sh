@@ -19,40 +19,50 @@ trap cleanup EXIT
 cwd=$(pwd)
 pushd $tmp
 
+# fetch staged raw sequence
 curl -o raw-sequences.fna.gz ftp://ftp.microbio.me/pub/publications-files/american-gut/raw-sequences.fna.gz
 
+# fetch the taxonomy classifier reference database
 curl -L -o gg-13-8-99-515-806-nb-classifier.qza https://data.qiime2.org/2017.4/common/gg-13-8-99-515-806-nb-classifier.qza
+
+# fetch a script to expand sOTUs to closed reference OTUs
 curl -L -o expand.py https://raw.githubusercontent.com/wasade/reimagined-fiesta/master/expand.py
+
+# fetch and install SEPP for performing fragment insertion
 curl -L -o sepp-package.tar.bz https://raw.github.com/smirarab/sepp-refs/master/gg/sepp-package.tar.bz
 tar xfj sepp-package.tar.bz
 pushd sepp-package/sepp
 python setup.py config -c
 popd
 
+# unzip and process with deblur
 zcat $HOME/raw-sequences.fna.gz > raw-sequences.fna
 deblur workflow --seqs-fp raw-sequences.fna --output-dir ag-deblurred-100nt --jobs-to-start 10 --trim-length 100 &
 deblur workflow --seqs-fp raw-sequences.fna --output-dir ag-deblurred-125nt --jobs-to-start 10 --trim-length 125 &
 deblur workflow --seqs-fp raw-sequences.fna --output-dir ag-deblurred-150nt --jobs-to-start 10 --trim-length 150 &
-
 wait
+
 cp -r ag-deblurred-100nt $cwd/
 cp -r ag-deblurred-125nt $cwd/
 cp -r ag-deblurred-150nt $cwd/
 
-## qs -> qiita study id
+# fetch staged merged Qiita data for the western/nonwestern analysis (as direct URLs to Qiita datasets are not possible right now)
+# qs -> qiita study id
 curl -o qs850_qs10052_qs1448.biom ftp://ftp.microbio.me/pub/publications-files/american-gut/qs850_qs10052_qs1448.biom
 curl -o $cwd/mapping_clemente_obregon_AGP2017simple.txt //ftp.microbio.me/pub/publications-files/american-gut/mapping_clemente_obregon_AGP2017simple.txt
 
+# merge with the AG data
 source activate qiime191
-
 merge_otu_tables.py -i qs850_qs10052_qs1448.biom,ag-deblurred-100nt/reference-hit.biom -o western_nonwestern.biom
 cp western_nonwestern.biom $cwd/
 
+# fetch the bloom sequences, and cut them to the various trim lengths
 curl -o blooms.fna https://raw.githubusercontent.com/knightlab-analyses/bloom-analyses/master/data/newbloom.all.fna
 cut -c 1-100 blooms.fna > bloom100.fa
 cut -c 1-125 blooms.fna > bloom125.fa
 cut -c 1-150 blooms.fna > bloom150.fa
 
+# remove any bloom seqquences
 filter_otus_from_otu_table.py -i ag-deblurred-100nt/reference-hit.biom -e bloom100.fa -o otu_table_no_blooms_100nt.biom &
 filter_otus_from_otu_table.py -i ag-deblurred-125nt/reference-hit.biom -e bloom125.fa -o otu_table_no_blooms_125nt.biom &
 filter_otus_from_otu_table.py -i ag-deblurred-150nt/reference-hit.biom -e bloom150.fa -o otu_table_no_blooms_150nt.biom &
@@ -67,6 +77,7 @@ do
     base=$(basename $f .biom)
 
     source activate qiime191
+
     # get a representative fasta file
     python -c "import biom; t = biom.load_table('$f'); f = open('$fna', 'w'); f.write(''.join(['>%s\n%s\n' % (i, i.upper()) for i in t.ids(axis='observation')]))"
     cp $fna $cwd/
@@ -87,8 +98,8 @@ do
     biom add-metadata -i $f --observation-metadata-fp ${uuid}/data/taxonomy.tsv -o ${f}_tax.biom --observation-header "#OTUID",taxonomy --sc-separated taxonomy
     cp ${f}_tax.biom $cwd/
 
-    source activate picrust
     # compute picrust profiles
+    source activate picrust
     gg99_otu_map=${base}_gg_cr99/${base}_otus.txt
     table_expanded=$(basename ${f} .biom)_gg99.biom
     python expand.py $f ${gg99_otu_map} ${table_expanded}
