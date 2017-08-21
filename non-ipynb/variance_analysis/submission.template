@@ -1,0 +1,32 @@
+#!/bin/bash
+#SBATCH -A csd465
+#SBATCH --job-name="ag-adonis-%a"
+#SBATCH --output="ag-adonis.%j.%N.array-%a.out"
+#SBATCH --partition=shared
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=15G
+#SBATCH --export=ALL
+#SBATCH -t 4:00:00
+
+sleep 10
+
+module load R
+source activate qiime191
+
+package=$HOME/scratch/ag-manuscript-package
+subset_dms=/scratch/$USER/$SLURM_JOB_ID/subset-dms
+subset_mappings=$HOME/scratch/subset-mappings
+
+mkdir -p ${subset_dms}
+
+vars=$(grep "^${SLURM_ARRAY_TASK_ID}	" array_details.txt)
+rare=$(echo ${vars} | awk '{ print $2 }')
+metric=$(echo ${vars} | awk '{ print $3 }')
+category=$(echo ${vars} | awk '{ print $4 }')
+iters=$(echo ${vars} | awk '{ print $5 }')
+
+python subset_dm.py --input ${package}/${rare}/distance/${metric}.txt --output ${subset_dms}/${category}-${rare}-${metric}.txt --mapping ${subset_mappings}/${category}.txt
+compare_categories.py -i ${subset_dms}/${category}-${rare}-${metric}.txt -m ${subset_mappings}/${category}.txt -c ${category} -o ${rare}/${metric}/${category} --method=adonis -n ${iters}
+
+rm ${subset_dms}/${category}-${rare}-${metric}.txt
