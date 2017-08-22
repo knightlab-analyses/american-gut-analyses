@@ -7,8 +7,7 @@ table = biom.load_table(sys.argv[1])
 tree = skbio.TreeNode.read(sys.argv[2])
 md = pd.read_csv(sys.argv[3], sep='\t', dtype=str).set_index('#SampleID')
 
-tree_names = {tree.name(i) for i in range(tree.B.size) if tree.B[i] if tree.name(i) is not None and tree.name(i)[0] in 'ATGC'}
-tree_names = {n.name for n in range(tree.tips()) n.name[0] in 'ATGC'}
+tree_names = {n.name for n in tree.tips() if n.name[0] in 'ATGC'}
 table_names = set(table.ids(axis='observation'))
 
 tree = tree.shear(set(table.ids(axis='observation')))

@@ -8,7 +8,7 @@ ta = biom.load_table(sys.argv[1])
 tb = biom.load_table(sys.argv[2])
 md = pd.read_csv(sys.argv[3], sep='\t', dtype=str).set_index('#SampleID')
 
-ids = {l.strip() for l in open('abx.ids')}
+ids = {l.strip() for l in open('../data/abx.ids')}
 ta_abx = ta.filter(lambda v, i, _: i in ids, inplace=False).remove_empty()
 tb_abx = tb.filter(lambda v, i, _: i in ids, inplace=False).remove_empty()
 
