@@ -113,37 +113,6 @@ def main(input_fp, output_fp, alpha_files, check_pval):
                             bbox_inches='tight')
                 fig.clf()
 
-#
-# def compare(p1, p2):
-#     with open(join('alpha_final', p1), 'rb') as f:
-#         resultsx = pickle.load(f)
-#     with open(join('alpha_final2', p2), 'rb') as f:
-#         resultsy = pickle.load(f)
-#     if resultsx['cseries'] != resultsy['cseries']:
-#         print ('%s, %s - cseries' % (p1, p2))
-#     if resultsx['pooled_pval'] != resultsy['pooled_pval']:
-#         print ('%s, %s - pooled_pval' % (p1, p2))
-#
-#     tmpx = sorted([str(v) for vv in resultsx['pairwise_comparisons'] for v in vv])
-#     tmpy = sorted([str(v) for vv in resultsy['pairwise_comparisons'] for v in vv])
-#     if tmpx != tmpy:
-#         print ('%s, %s - pairwise_comparisons' % (p1, p2))
-#
-#     return resultsx['pooled_pval'], resultsy['pooled_pval']
-#
-#
-# pickles1 = sorted([f for f in listdir('alpha_final') if f.endswith('.pickle')])
-# pickles2 = sorted([f for f in listdir('alpha_final2') if f.endswith('.pickle')])
-#
-# xvals, yvals = [], []
-# for x, y in zip(pickles1, pickles2):
-#     xv, yv = compare(x, y)
-#     xvals.append(xv)
-#     yvals.append(yv)
-#
-# alpha = 0.05
-# rejectsx, pvalsx, _, _ = multipletests(xvals, alpha=alpha, method='fdr_bh', returnsorted=False)
-# rejectsy, pvalsy, _, _ = multipletests(yvals, alpha=alpha, method='fdr_bh', returnsorted=False)
 
 if __name__ == '__main__':
     mpl.rcParams['pdf.fonttype'] = 42

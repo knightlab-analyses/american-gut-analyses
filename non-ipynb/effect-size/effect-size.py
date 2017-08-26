@@ -90,8 +90,10 @@ def _beta(permutations, data, xvalues, yvalues):
         column=xvalues.name,
         grouping=pd.concat([xvalues, yvalues]).to_frame(),
         permutations=permutations).to_dict()
-    xvals = list(data_test.filter(xvalues.index.values).to_series().values)
-    yvals = list(data_test.filter(yvalues.index.values).to_series().values)
+    xvals = list(
+        data_test.filter(xvalues.index.values).to_series().dropna().values)
+    yvals = list(
+        data_test.filter(yvalues.index.values).to_series().dropna().values)
     return (permanova_result['p-value'], permanova_result['test statistic'],
             xvals, yvals)
 
@@ -119,7 +121,7 @@ def _generate_betas(betas, mappings, permutations, output):
                 fname = join(output, '%s.%s.%s.%d.pickle' % (
                     bfp, mfp, col, permutations))
                 if not exists(fname):
-                    yield (bf, mf[col], fname, method)
+                    yield (bf, mf[col].dropna(), fname, method)
 
 
 def _generate_alphas(alphas, mappings, output, alpha_method):
