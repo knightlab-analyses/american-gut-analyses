@@ -7,7 +7,7 @@ A "unique" feature in the AGP context is a sOTU and the uniqueness is if they ar
 # To run
 
 You need a biom table and the pickles folder in where you are running your commands. Note that the number of
-iterations (= 100, how many times we are gonna repeat each step), the steps (= 100,the number of samples we are
+iterations (= 100, how many times we are gonna repeat each step), the steps (= 100, the number of samples we are
 gonna select between steps), the max_ocurrances (= 11, the maximum number of "unique" features), and the
 number of parallel jobs (= 64) are hardcoded in the script.
 

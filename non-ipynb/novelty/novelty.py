@@ -18,6 +18,25 @@ step = 100
 max_occurrences = 11
 
 def calculate(iterations, biom_table, samples_to_select, max_occurrences):
+    """Calculate the number of features with up to max_occurrences features in
+    samples_to_select samples
+
+    Parameters
+    ----------
+    iterations : int
+        Times each step should be repeated
+    biom_table : biom.table.Table
+        Biom table that we need to process
+    samples_to_select : int
+        Number of samples we need to select in each iteration
+    max_occurrences : int
+        Number of feature ocurrences so a sample is selected
+
+    Returns
+    -------
+    A pickle of the results, with cols:
+    max_ocurrances, samples_to_select, uniques
+    """
     sids = list(biom_table.ids())
     results = []
     for i in range(iterations):
