@@ -1,9 +1,10 @@
-\documentclass[10pt]{amsart}
-\usepackage[paperheight=9.2in,paperwidth=6in,margin=0in]{geometry}
+\documentclass[9pt]{amsart}
+\usepackage[paperheight=8.4in,paperwidth=6in,margin=0.5in]{geometry}
 %\geometry{landscape}                % Activate for for rotated page geometry
 %\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{xstring,xifthen} % string length with conditionals
 \usepackage{epstopdf}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
@@ -17,8 +18,8 @@
 \setlength{\parskip}{1em}
 % margins
 %\addtolength{\oddsidemargin}{0.25in}
-\addtolength{\topmargin}{0.15in}
-%\addtolength{\textheight}{3in}
+\addtolength{\topmargin}{-0.3in}
+\addtolength{\textheight}{0.5in}
 % frame
 \definecolor{shadecolor}{rgb}{0.95,0.95,0.95}
 % fixed width font (Courier)
@@ -57,47 +58,47 @@
 \includegraphics[width=12cm]{../agp_header.pdf}
 \end{center}
 
-\hspace{2cm}
+\hspace{1.2cm}
 \begin{tabular}{L{5in}}
 \texttt{\sequence{}}
 \end{tabular}
 
 \begin{raggedright}
 \begin{hangparas}{2em}{1}
-    TAXONOMY: \taxonomyGG{}
-    
-    WIKIPEDIA:  \wikipedia{}
 
+    TAXONOMY:   \taxonomyGG{}
+\\ \vspace{2mm}
+    WIKIPEDIA:  \wikipedia{}
+\\ \vspace{2mm}
     PREVALENCE: Found in \prevalencePercent{}\% of 9,511 samples, %\numSamples{}
                 rank \#\prevalenceRank{} out of 27,248 sequences. %\numOTUs{}
-
-    ABUNDANCE:  Composes \abundancePercent{}\% of 11,888,750 observations,
+\\ \vspace{2mm}
+    ABUNDANCE:  Composes \abundancePercent{}\% of 11.9M observations,
                 rank \#\abundanceRank{} out of 27,248 sequences. %\numOTUs{}
-            
+\\ \vspace{2mm}
     METHODS:    Amplicon PCR with 16S rRNA V4 primers 515f--806rB.
-    			Sequencing with Illumina MiSeq 150-bp single reads.
-                Suspected erroneous sequences removed with Deblur, 
-                then trimmed to \trimLength{}~bp and
+    			Sequenced with Illumina MiSeq (150~bp).
+                Error-corrected with Deblur, trimmed to \trimLength{}~bp, and
                 rarefied to 1,250 observations per sample. %\rarefactionDepth{}
                 Showing 9,511 samples from the American Gut cohort. %\numSamples{}
-
 \end{hangparas}
 
 PREVALENCE BY METADATA:
 
-\begin{tabular}{L{6.5cm} L{6.5cm}}
-\includegraphics[height=4.5cm]{age_cat.pdf} & 
-\includegraphics[height=4.5cm]{antibiotic_history.pdf}\\ 
-\includegraphics[height=4.5cm]{fruit_frequency.pdf} &
-\includegraphics[height=4.5cm]{types_of_plants.pdf}
+\begin{tabular}{| L{6cm} | L{6cm} |}
+\hline
+\includegraphics[height=4.4cm]{age_cat.pdf} & 
+\includegraphics[height=4.4cm]{antibiotic_history.pdf}\\ 
+\hline
+\includegraphics[height=4.4cm]{fruit_frequency.pdf} &
+\includegraphics[height=4.4cm]{types_of_plants.pdf}\\
+\hline
 \end{tabular}
-
 \end{raggedright}
 
-
-\begin{center}
-	\copyright{} 2017 American Gut Project
-\end{center}
+%\begin{center}
+%	\copyright{} 2017 American Gut Project
+%\end{center}
 
 %\end{framed}
 
